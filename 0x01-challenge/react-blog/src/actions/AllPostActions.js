@@ -8,7 +8,7 @@ class AllPostActions {
         var AllPostStore = require('../stores/AllPostStore');
         var state = AllPostStore.getState();
         if(!!state.postsByPage[pageNum]) {
-            this.actions.updatePsots(state.postsByPage[pageNum], pageNum);
+            this.actions.updatePosts(state.postsByPage[pageNum], pageNum);
         } else {
             var self = this;
 
@@ -43,7 +43,7 @@ class AllPostActions {
             (!!state.postListContent.header && state.postListContent.header != '')) {
             return;
         }
-        reqeust.get(config.baseUrl+'/ajax/postListContent',function(err,response){
+        request.get(config.baseUrl+'/ajax/postListContent',function(err,response){
             self.actions.updatePostListContent(response.body);
         });
     }
@@ -62,7 +62,7 @@ class AllPostActions {
         }
     }
 
-    updateNumberOfPosts(num) {
+    update_numberOfPosts(num) {
         this.dispatch(num);
     }
 
